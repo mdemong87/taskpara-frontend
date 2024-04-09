@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,400;1,500;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --parimaryBackground: #003173;
+  --btnBackground: #0367b4;
+  --secbtn: #ecedee;
+  --yellowBorder: #febb02;
+}
+
+
+.pBg {
+  background: var(--btnBackground);
+}
+
+
+.trBg {
+  background: rgba(0, 0, 0, 0.244);
+  z-index: 99 ! important;
+}
+
+.R360 {
+  transition: 1s;
+}
+
+.R360:hover {
+  transform: rotate(360deg);
+}
+
+.asideWrperWrper {
+  position: relative !important;
+
+}
+
+.asideWrper {
+  position: fixed !important;
+  top: 0 !important;
+  height: 100%;
+  width: 20%;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
