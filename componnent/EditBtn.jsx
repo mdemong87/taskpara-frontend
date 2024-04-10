@@ -68,6 +68,8 @@ function EditBtn({ id }) {
                 headers: {
                     "Content-Type": "application/json"
                 },
+                credentials: "include",
+                withCredentials: true,
                 body: JSON.stringify(updateData)
             });
             const res = await response.json();
@@ -134,10 +136,10 @@ function EditBtn({ id }) {
                                 </div>
                                 <div className="w-full md:w-[70%]">
                                     <select value={stage} onChange={(e) => { setstage(e.target.value) }} className="w-full bg-gray-100 p-2 text-lg text-gray-600 outline-gray-400">
-                                        <option defaultValue={"To-Do"} value="To-Do">To-Do</option>
+                                        <option value={"Brief"}>Brief</option>
+                                        <option value="To-Do">To-Do</option>
                                         <option value="In-Progress">In Progress</option>
                                         <option value="Complete">Complete</option>
-                                        <option value="To-Do">To-Do</option>
                                     </select>
                                 </div>
                             </div>

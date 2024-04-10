@@ -101,7 +101,6 @@ function AddBtn() {
                                         <option value="To-Do">To-Do</option>
                                         <option value="In-Progress">In Progress</option>
                                         <option value="Complete">Complete</option>
-                                        <option value="To-Do">To-Do</option>
                                     </select>
                                 </div>
                             </div>

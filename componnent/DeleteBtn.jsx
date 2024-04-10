@@ -32,10 +32,7 @@ function DeleteBtn({ id }) {
             if (res.success) {
                 setisshow(false);
                 toast.success(res.message);
-
-                setTimeout(() => {
-                    router.push("/app");
-                }, 1000)
+                router.push("/app");
             } else {
                 toast.error(res.message);
             }
