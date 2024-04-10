@@ -1,9 +1,23 @@
+'use client'
+
+import { useState } from "react";
 import Bar from "./Bar";
 import BarHead from "./BarHead";
 import SmallScreenContentController from "./smallScreenContentController";
 
 function ContentSide({ data }) {
 
+
+    const [controler, setcontroler] = useState("To-Do");
+
+
+    const controllerItem = data.filter((item) => {
+        return item.stage === controler;
+    })
+
+    const brif = data.filter((item) => {
+        return item.stage === 'Brief';
+    });
 
     const todo = data.filter((item) => {
         return item.stage === 'To-Do';
@@ -23,17 +37,17 @@ function ContentSide({ data }) {
     return (
         <div>
 
-            <SmallScreenContentController />
+            <SmallScreenContentController setcontroler={setcontroler} />
 
             <div className="grid grid-cols-12 gap-5 justify-between items-center mt-1 lg:mt-6 h-[90%] w-full pl-1 md:pr-5">
 
 
 
-                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full">
+                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full hidden lg:block">
                     < BarHead name={"Brief"} count={"4"} />
 
                     {
-                        todo?.map((item, index) => {
+                        brif?.map((item, index) => {
                             return (
                                 <Bar barData={item} key={index} />
                             )
@@ -45,7 +59,7 @@ function ContentSide({ data }) {
 
 
 
-                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full">
+                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full hidden lg:block">
 
 
                     < BarHead name={"To-Do"} count={"2"} />
@@ -60,7 +74,7 @@ function ContentSide({ data }) {
                 </div>
 
 
-                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full">
+                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full hidden lg:block">
 
                     < BarHead name={"In Progress"} count={"3"} />
 
@@ -75,13 +89,26 @@ function ContentSide({ data }) {
                 </div>
 
 
-                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full">
+                <div className="col-span-12 md:col-span-6 lg:col-span-3 rounded-md h-full hidden lg:block">
 
                     < BarHead name={"Complete"} count={"1"} />
                     {
                         Complete?.map((item, index) => {
                             return (
                                 <Bar barData={item} key={index} />
+                            )
+                        })
+                    }
+                </div>
+
+
+                <div className="grid gap-5 grid-cols-12 col-span-12 w-full lg:hidden rounded-md h-full">
+                    {
+                        controllerItem?.map((item, index) => {
+                            return (
+                                <div className="col-span-12 md:col-span-6" key={index}>
+                                    <Bar barData={item} />
+                                </div>
                             )
                         })
                     }

@@ -1,14 +1,19 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import Modaler from "../componnent/Modaler";
+
+import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AddInputer from "./AddInputer";
 import Loading from "./Loading";
 
-function EditBtn({ data }) {
+function EditBtn({ id }) {
 
-    const id = data?._id;
+
+    const router = useRouter();
     const [isshow, setisshow] = useState(false);
     const [isloading, setisloading] = useState(false);
     const [title, settitle] = useState('');
@@ -19,13 +24,34 @@ function EditBtn({ data }) {
 
 
 
-
-    async function handleTaskUpdate() {
-
-        if (!id) {
-            console.error("Task ID is not defined.");
-            return;
+    useEffect(() => {
+        if (isshow) {
+            fetchData();
         }
+    }, [isshow]);
+
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`);
+            const jsonData = await response.json();
+            settitle(jsonData.data.title);
+            setpriority(jsonData.data.priority);
+            setstage(jsonData.data.stage);
+            setdis(jsonData.data.dis);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+
+
+
+
+
+
+    async function handleTaskUpdate(id) {
+
         try {
 
             const updateData = {
@@ -35,7 +61,6 @@ function EditBtn({ data }) {
                 dis: dis
             }
 
-            console.log(updateData);
 
             setisloading(true);
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`, {
@@ -47,7 +72,16 @@ function EditBtn({ data }) {
             });
             const res = await response.json();
             setisloading(false);
-            console.log(res);
+
+            if (res.success) {
+                setisshow(false);
+                router.push('/app');
+                toast.success(res.message);
+            } else {
+                toast.error(res.message);
+            }
+
+
         } catch (error) {
             console.log(error);
             console.error("Error updating task:", error.message);
@@ -60,6 +94,7 @@ function EditBtn({ data }) {
 
     return (
         <div>
+            <ToastContainer />
             {isloading && <Loading />}
             <button onClick={() => setisshow(true)} className="bg-green-300 text-gray-50 cursor-pointer px-1 py-1 md:px-3 md:py-1 gap-1 flex items-center border rounded-md transition hover:scale-105">
                 <FaRegEdit className="text-xs sm:text-sm md:text-md text-gray-100" />
@@ -121,7 +156,7 @@ function EditBtn({ data }) {
 
 
 
-                            <div onClick={() => handleTaskUpdate()} className="w-full flex justify-end">
+                            <div onClick={() => handleTaskUpdate(id)} className="w-full flex justify-end">
                                 <button className="bg-gray-800 cursor-pointer rounded-md text-gray-100 px-3 py-2 transition hover:scale-105">Update Task</button>
                             </div>
 

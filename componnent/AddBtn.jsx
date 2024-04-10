@@ -15,8 +15,8 @@ function AddBtn() {
 
     const [isshow, setisshow] = useState(false);
     const [title, settitle] = useState('');
-    const [priority, setpriority] = useState('');
-    const [stage, setstage] = useState('');
+    const [priority, setpriority] = useState('Low');
+    const [stage, setstage] = useState('Brief');
     const [dis, setdis] = useState('');
     const [isloading, setisloading] = useState(false);
 
@@ -39,8 +39,8 @@ function AddBtn() {
             setisloading(false);
             if (res.success) {
                 settitle('');
-                setpriority('');
-                setstage('');
+                setpriority('Low');
+                setstage('Brief');
                 setdis('');
                 setisshow(false);
                 router.refresh();
@@ -81,7 +81,7 @@ function AddBtn() {
                                 </div>
                                 <div className="w-full md:w-[70%]">
                                     <select onChange={(e) => { setpriority(e.target.value) }} className="w-full bg-gray-100 p-2 text-lg text-gray-600 outline-gray-400">
-                                        <option defaultValue={"Low"} value="Low">Low</option>
+                                        <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
                                         <option value="High">High</option>
                                     </select>
@@ -97,7 +97,8 @@ function AddBtn() {
                                 </div>
                                 <div className="w-full md:w-[70%]">
                                     <select onChange={(e) => { setstage(e.target.value) }} className="w-full bg-gray-100 p-2 text-lg text-gray-600 outline-gray-400">
-                                        <option defaultValue={"To-Do"} value="To-Do">To-Do</option>
+                                        <option value={"Brief"}>Brief</option>
+                                        <option value="To-Do">To-Do</option>
                                         <option value="In-Progress">In Progress</option>
                                         <option value="Complete">Complete</option>
                                         <option value="To-Do">To-Do</option>

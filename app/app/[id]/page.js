@@ -15,7 +15,7 @@ function SingleItem(props) {
 
     useEffect(() => {
         fetchData();
-    });
+    }, []);
 
     const fetchData = async () => {
         try {
