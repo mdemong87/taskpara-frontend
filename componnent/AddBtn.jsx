@@ -69,17 +69,17 @@ function AddBtn() {
 
             {
                 isshow && <Modaler setisshow={setisshow}>
-                    <div className="w-[1000px] h-fit">
+                    <div className="w-[300px] sm:w-[360px] md:w-[700px] lg:w-[1000px] h-fit">
                         <div className="w-full p-2">
                             <AddInputer value={title} setvalue={settitle} name={"Task Title"} />
 
 
-                            <div className="flex justify-between items-center w-full gap-4 my-5">
-                                <div className="w-[30%] flex items-center justify-between">
+                            <div className="flex flex-col md:flex-row justify-between items-center w-full gap-2 md:gap-4 my-5">
+                                <div className="w-full md:w-[30%] flex items-center justify-between">
                                     <span className="text-xl font-semibold text-gray-500">Task Priority</span>
                                     <span>:</span>
                                 </div>
-                                <div className="w-[70%]">
+                                <div className="w-full md:w-[70%]">
                                     <select onChange={(e) => { setpriority(e.target.value) }} className="w-full bg-gray-100 p-2 text-lg text-gray-600 outline-gray-400">
                                         <option defaultValue={"Low"} value="Low">Low</option>
                                         <option value="Medium">Medium</option>
@@ -90,12 +90,12 @@ function AddBtn() {
 
 
 
-                            <div className="flex justify-between items-center w-full gap-4 my-5">
-                                <div className="w-[30%] flex items-center justify-between">
+                            <div className="flex flex-col md:flex-row justify-between items-center w-full gap-2 md:gap-4 my-5">
+                                <div className="w-full md:w-[30%] flex items-center justify-between">
                                     <span className="text-xl font-semibold text-gray-500">Task Stage</span>
                                     <span>:</span>
                                 </div>
-                                <div className="w-[70%]">
+                                <div className="w-full md:w-[70%]">
                                     <select onChange={(e) => { setstage(e.target.value) }} className="w-full bg-gray-100 p-2 text-lg text-gray-600 outline-gray-400">
                                         <option defaultValue={"To-Do"} value="To-Do">To-Do</option>
                                         <option value="In-Progress">In Progress</option>
@@ -107,12 +107,12 @@ function AddBtn() {
 
 
 
-                            <div className="flex justify-between items-start w-full gap-4 my-5">
-                                <div className="w-[30%] flex items-center justify-between">
+                            <div className="flex flex-col md:flex-row justify-between items-start w-full gap-2 md:gap-4 my-5">
+                                <div className="w-full md:w-[30%] flex items-center justify-between">
                                     <span className="text-xl font-semibold text-gray-500">Task Discription</span>
                                     <span>:</span>
                                 </div>
-                                <div className="w-[70%]">
+                                <div className="w-full md:w-[70%]">
                                     <textarea onChange={(e) => { setdis(e.target.value) }} className="w-full bg-gray-100 h-[180px] p-2 text-lg text-gray-600 outline-gray-400"></textarea>
                                 </div>
                             </div>

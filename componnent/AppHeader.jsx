@@ -1,18 +1,19 @@
-import { FaCalendarAlt, FaListUl, FaRegUserCircle } from "react-icons/fa";
+import { FaCalendarAlt, FaListUl, FaRegUserCircle, FaSearch } from "react-icons/fa";
+import { FiFilter } from "react-icons/fi";
 import { IoIosNotifications } from "react-icons/io";
 import { IoClipboard } from "react-icons/io5";
-import { MdOutlineExpandMore } from "react-icons/md";
-
-import { FaSearch } from "react-icons/fa";
-import { FiFilter } from "react-icons/fi";
-import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { LuMenu } from "react-icons/lu";
+import { MdOutlineDashboardCustomize, MdOutlineExpandMore } from "react-icons/md";
 import AddBtn from "./AddBtn";
 
-function AppHeader() {
+function AppHeader({ setasideShow }) {
     return (
-        <header className="h-[135px] sticky top-0 pl-4 pr-8 flex flex-col justify-center border bg-gray-100 z-30 select-none">
+        <header className="h-[135px] sticky top-0 pl-4 pr-4 md:pr-8 flex flex-col justify-center border bg-gray-100 z-30 select-none">
             <div className="flex justify-between items-center">
-                <h3 className="text-xl font-bold">All Tasks</h3>
+                <div className="flex gap-4 items-center">
+                    <LuMenu onClick={() => setasideShow(true)} className="text-3xl text-gray-700 cursor-pointer block lg:hidden" />
+                    <h3 className="text-xl font-bold">All Tasks</h3>
+                </div>
                 <div className="flex gap-3 items-center">
                     <IoIosNotifications className="text-2xl text-gray-600" />
                     <FaRegUserCircle className="text-3xl text-gray-600" />
@@ -39,20 +40,30 @@ function AppHeader() {
                         </div>
                     </div>
                 </div>
-                <div className="w-fit">
-                    <div className="flex justify-between items-center gap-3">
-                        <div className="bg-gray-50 px-3 py-1 gap-1 flex items-center border rounded-md">
-                            <FaSearch className="text-lg  text-gray-500" />
-                            <span className="hidden lg:block">Search in View...</span>
+                <div className="w-full lg:w-fit">
+                    <div className="flex justify-between items-center gap-3 w-full">
+
+                        <div className="flex justify-between items-center gap-3">
+                            <div className="bg-gray-50 px-3 py-1 gap-1 flex items-center border rounded-md">
+                                <FaSearch className="text-lg  text-gray-500" />
+                                <span className="hidden lg:block">Search in View...</span>
+                            </div>
+                            <div className="bg-gray-50 px-3 py-1 gap-1 items-center border rounded-md hidden md:flex">
+                                < FiFilter className="text-lg text-gray-500" />
+                                <span>Filter</span>
+                            </div>
+                            <div className="bg-gray-50 px-3 py-1 gap-1 items-center border rounded-md hidden md:flex">
+                                <MdOutlineDashboardCustomize className="text-lg text-gray-500" />
+                                <span>Customize</span>
+                            </div>
+
+
+                            <div className="flex px-3 gap-1 py-1 items-center md:hidden">
+                                <span>More View</span>
+                                <MdOutlineExpandMore className="text-lg text-gray-500" />
+                            </div>
                         </div>
-                        <div className="bg-gray-50 px-3 py-1 gap-1 flex items-center border rounded-md">
-                            < FiFilter className="text-lg text-gray-500" />
-                            <span>Filter</span>
-                        </div>
-                        <div className="bg-gray-50 px-3 py-1 gap-1 flex items-center border rounded-md">
-                            <MdOutlineDashboardCustomize className="text-lg text-gray-500" />
-                            <span>Customize</span>
-                        </div>
+
                         <AddBtn />
                     </div>
                 </div>

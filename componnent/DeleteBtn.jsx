@@ -37,9 +37,9 @@ function DeleteBtn({ id }) {
     return (
         <div>
             {isloading && <Loading />}
-            <button onClick={() => setisshow(true)} className="bg-red-400 text-gray-50 cursor-pointer px-3 py-1 gap-1 flex items-center border rounded-md transition hover:scale-105">
-                <MdDeleteOutline className="text-md text-gray-100" />
-                <span className="text-md">Delete</span>
+            <button onClick={() => setisshow(true)} className="bg-red-400 text-gray-50 cursor-pointer px-1 py-1 md:px-3 md:py-1 gap-1 flex items-center border rounded-md transition hover:scale-105">
+                <MdDeleteOutline className="text-xs sm:text-sm md:text-md text-gray-100" />
+                <span className="text-xs sm:text-sm md:text-md">Delete</span>
             </button>
 
 

@@ -20,9 +20,6 @@ function SingleItem(props) {
     const fetchData = async () => {
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
             const jsonData = await response.json();
             setdata(jsonData);
         } catch (error) {
@@ -33,7 +30,7 @@ function SingleItem(props) {
 
 
     return (
-        <div className="px-5 py-3">
+        <div className="pl-4 pr-1 md:pl-5 md:pr-5 py-3">
             <SigleItemTopControler link={'/app'} data={data?.data} />
 
             <div className="my-4 mr-3 bg-gray-50 px-3 py-4 rounded-md">

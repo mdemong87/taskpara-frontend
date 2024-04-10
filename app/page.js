@@ -6,7 +6,7 @@ import { PiCursorClickFill } from "react-icons/pi";
 export default function Home() {
 
   return (
-    <main className="pBg h-screen w-screen text-gray-100 flex justify-center items-center">
+    <main className="pBg h-screen w-screen text-gray-100 flex justify-center items-center px-10">
       <div className="text-center flex flex-col items-center">
         <h2 className="text-4xl pb-8 font-semibold">Welcome to Coder Squad MERN Assessment</h2>
         <h3 className="text-2xl font-semibold">Project Name Taskpara</h3>
