@@ -65,6 +65,7 @@ function EditBtn({ id }) {
             setisloading(true);
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`, {
                 method: "PUT",
+                mode: 'cors',
                 headers: {
                     "Content-Type": "application/json"
                 },
