@@ -28,7 +28,7 @@ function AddBtn() {
         } else {
             setisloading(true);
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_MOCKAPI_URL}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -37,18 +37,13 @@ function AddBtn() {
             });
             const res = await response.json();
             setisloading(false);
-            if (res.success) {
-                settitle('');
-                setpriority('Low');
-                setstage('Brief');
-                setdis('');
-                setisshow(false);
-                router.refresh();
-                toast.success(res.message);
-            } else {
-                toast.error(res.message);
-            }
-
+            settitle('');
+            setpriority('Low');
+            setstage('Brief');
+            setdis('');
+            setisshow(false);
+            router.push('/app');
+            toast.success("Task Create Successfull");
         }
 
     }

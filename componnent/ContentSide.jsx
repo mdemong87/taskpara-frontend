@@ -1,41 +1,55 @@
 'use client'
 
+import getTask from "@/utlite/getTask";
 import { useState } from "react";
+import { useQuery } from "react-query";
 import Bar from "./Bar";
 import BarHead from "./BarHead";
+import Loading from "./Loading";
 import SmallScreenContentController from "./smallScreenContentController";
 
-function ContentSide({ data }) {
+function ContentSide() {
+
+    const { data, isLoading, error, isError } = useQuery("AllTask", () => getTask(process.env.NEXT_PUBLIC_MOCKAPI_URL));
+
 
 
     const [controler, setcontroler] = useState("To-Do");
 
 
-    const controllerItem = data.filter((item) => {
+    const controllerItem = data?.filter((item) => {
         return item.stage === controler;
     })
 
-    const brif = data.filter((item) => {
+    const brif = data?.filter((item) => {
         return item.stage === 'Brief';
     });
 
-    const todo = data.filter((item) => {
+    const todo = data?.filter((item) => {
         return item.stage === 'To-Do';
     });
 
-    const Progress = data.filter((item) => {
+    const Progress = data?.filter((item) => {
         return item.stage === 'In-Progress';
     });
 
 
-    const Complete = data.filter((item) => {
+    const Complete = data?.filter((item) => {
         return item.stage === 'Complete';
     });
 
 
 
+    if (isError) {
+        return (
+            <h1>{error.message}</h1>
+        )
+    }
+
+
     return (
         <div>
+            {isLoading && <Loading />}
 
             <SmallScreenContentController setcontroler={setcontroler} />
 
@@ -113,6 +127,8 @@ function ContentSide({ data }) {
                         })
                     }
                 </div>
+
+
 
             </div >
         </div>

@@ -8,26 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function LogoutBtn() {
 
-
-
     const router = useRouter();
 
+    function handleLogout() {
 
-
-    async function handleLogout() {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/logout`, {
-            method: "DELETE",
-        });
-        const res = await response.json();
-        if (res.success) {
-            toast.success(res.message);
-            setTimeout(() => {
-                router.push("/login");
-            }, 1000)
-        } else {
-            toast.success(res.message);
-        }
+        toast.success("Logout Successfull");
+        setTimeout(() => {
+            router.push("/login");
+        }, 1000)
     }
+
 
 
     return (

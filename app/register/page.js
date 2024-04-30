@@ -86,7 +86,7 @@ export default function Register() {
                 <input onChange={(e) => setcountry(e.target.value)} type="text" placeholder="Country" />
                 <input onChange={(e) => setpass(e.target.value)} type="password" placeholder="Password" />
                 <input onChange={(e) => setconpass(e.target.value)} type="password" placeholder="confrime Password" />
-                <button onClick={() => handleClick()}>Sign Up</button>
+                <button disabled onClick={() => handleClick()}>Sign Up</button>
                 <p>Have an Account ? <Link href="/login">Login</Link></p>
             </div>
             <ToastContainer />

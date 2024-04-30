@@ -21,17 +21,19 @@ export default function Login() {
 
     async function handleClick() {
 
-        if (email === "" || password === "") {
-            toast.warn("Enter all filed");
+        if (email === "" && password !== "") {
+            toast.warn("Enter Email");
+        } else if (password === "" && email !== "") {
+            toast.warn("Enter Password");
+        } else if (email === "" && password === "") {
+            toast.warn("Enter Email and Password");
         } else {
             setisloading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, {
+            const response = await fetch(`/api/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                credentials: "include",
-                withCredentials: true,
                 body: JSON.stringify({
                     email: email,
                     pass: password
@@ -45,7 +47,7 @@ export default function Login() {
                 toast.success(res.message);
                 setTimeout(() => {
                     router.push('/app');
-                }, 1000)
+                }, 700)
             } else {
                 toast.error(res.message);
             }

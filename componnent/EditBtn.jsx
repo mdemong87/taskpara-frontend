@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import Modaler from "../componnent/Modaler";
 
@@ -10,41 +10,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddInputer from "./AddInputer";
 import Loading from "./Loading";
 
-function EditBtn({ id }) {
+function EditBtn({ data }) {
+
+
+    console.log(data);
 
 
     const router = useRouter();
     const [isshow, setisshow] = useState(false);
     const [isloading, setisloading] = useState(false);
-    const [title, settitle] = useState('');
+    const [title, settitle] = useState(data?.title);
     const [priority, setpriority] = useState('');
     const [stage, setstage] = useState('');
     const [dis, setdis] = useState('');
 
 
-
-
-    useEffect(() => {
-        if (isshow) {
-            fetchData();
-        }
-    }, [isshow]);
-
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`);
-            const jsonData = await response.json();
-            settitle(jsonData.data.title);
-            setpriority(jsonData.data.priority);
-            setstage(jsonData.data.stage);
-            setdis(jsonData.data.dis);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-
+    console.log(title);
 
 
 
@@ -63,28 +44,20 @@ function EditBtn({ id }) {
 
 
             setisloading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_MOCKAPI_URL}/${id}`, {
                 method: "PUT",
-                mode: 'cors',
                 headers: {
                     "Content-Type": "application/json"
                 },
-                credentials: "include",
-                withCredentials: true,
                 body: JSON.stringify(updateData)
             });
             const res = await response.json();
             setisloading(false);
-
-            if (res.success) {
-                setisshow(false);
+            setisshow(false);
+            toast.success("Edit Task Successull");
+            setTimeout(() => {
                 router.push('/app');
-                toast.success(res.message);
-            } else {
-                toast.error(res.message);
-            }
-
-
+            }, 1000);
         } catch (error) {
             console.log(error);
             console.error("Error updating task:", error.message);
@@ -159,7 +132,7 @@ function EditBtn({ id }) {
 
 
 
-                            <div onClick={() => handleTaskUpdate(id)} className="w-full flex justify-end">
+                            <div onClick={() => handleTaskUpdate(data?.id)} className="w-full flex justify-end">
                                 <button className="bg-gray-800 cursor-pointer rounded-md text-gray-100 px-3 py-2 transition hover:scale-105">Update Task</button>
                             </div>
 

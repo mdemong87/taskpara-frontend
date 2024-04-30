@@ -24,18 +24,16 @@ function DeleteBtn({ id }) {
         try {
 
             setisloading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/app/task/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_MOCKAPI_URL}/${id}`, {
                 method: "DELETE"
             });
             const res = await response.json();
             setisloading(false);
-            if (res.success) {
-                setisshow(false);
-                toast.success(res.message);
+            setisshow(false);
+            toast.success("Task Delete Successfull");
+            setTimeout(() => {
                 router.push("/app");
-            } else {
-                toast.error(res.message);
-            }
+            }, 1000);
         } catch (error) {
             console.log(error);
             console.error("Error updating task:", error.message);

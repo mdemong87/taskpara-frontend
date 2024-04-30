@@ -15,8 +15,8 @@ function SigleItemTopControler({ link, data }) {
                 <p className="text-gray-400 hidden sm:block">{`All Task / ${data?.title}`}</p>
             </div>
             <div className="flex gap-4 items-center">
-                <EditBtn id={data?._id} />
-                <DeleteBtn id={data?._id} />
+                <EditBtn data={data} />
+                <DeleteBtn id={data?.id} />
             </div>
         </div>
     )

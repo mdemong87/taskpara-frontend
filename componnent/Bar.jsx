@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaFlag, FaLink, FaRegComment } from "react-icons/fa";
-import profile from "../public/profile.png";
 import convertToLocalDate from "../utlite/convertToLocalDate";
 
 function Bar({ barData }) {
 
     return (
-        <Link href={`/app/${barData?._id}`}>
+        <Link href={`/app/${barData?.id}`}>
             <div className="rounded-lg cursor-pointer border py-2 px-3 border my-5 bg-gray-50 h-fit transition duration-500 hover:scale-105">
                 <div>
                     <div className="flex flex-col gap-1 justify-center">
@@ -26,9 +25,9 @@ function Bar({ barData }) {
                     </div>
                     <div className="py-3">
                         <div className='flex items-center relative'>
-                            <Image className="border w-[40px] h-[40px] rounded-full z-20" src={profile} alt="Peaple" />
-                            <Image className="border w-[40px] h-[40px] rounded-full z-20 absolute left-5" src={profile} alt="Peaple" />
-                            <Image className="border w-[40px] h-[40px] rounded-full z-20 absolute left-10" src={profile} alt="Peaple" />
+                            <Image width={500} height={500} className="border w-[40px] h-[40px] rounded-full z-20" src={barData?.avatarOne} alt="Peaple" />
+                            <Image width={500} height={500} className="border w-[40px] h-[40px] rounded-full z-20 absolute left-5" src={barData?.avatarTwo} alt="Peaple" />
+                            <Image width={500} height={500} className="border w-[40px] h-[40px] rounded-full z-20 absolute left-10" src={barData?.avatarThree} alt="Peaple" />
                         </div>
                     </div>
                     <div className="pt-3 flex items-center justify-between">
