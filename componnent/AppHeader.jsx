@@ -2,16 +2,18 @@ import { FaCalendarAlt, FaListUl, FaRegUserCircle, FaSearch } from "react-icons/
 import { FiFilter } from "react-icons/fi";
 import { IoIosNotifications } from "react-icons/io";
 import { IoClipboard } from "react-icons/io5";
-import { LuMenu } from "react-icons/lu";
 import { MdOutlineDashboardCustomize, MdOutlineExpandMore } from "react-icons/md";
 import AddBtn from "./AddBtn";
+import MenuBtn from "./app/header/MenuBtn";
+import Search from "./app/header/Search";
 
-function AppHeader({ setasideShow }) {
+function AppHeader() {
+
     return (
         <header className="h-[135px] sticky top-0 pl-4 pr-4 md:pr-8 flex flex-col justify-center border bg-gray-100 z-30 select-none">
             <div className="flex justify-between items-center">
                 <div className="flex gap-4 items-center">
-                    <LuMenu onClick={() => setasideShow(true)} className="text-3xl text-gray-700 cursor-pointer block lg:hidden" />
+                    <MenuBtn />
                     <h3 className="text-xl font-bold">All Tasks</h3>
                 </div>
                 <div className="flex gap-3 items-center">
@@ -44,9 +46,9 @@ function AppHeader({ setasideShow }) {
                     <div className="flex justify-between items-center gap-3 w-full">
 
                         <div className="flex justify-between items-center gap-3">
-                            <div className="bg-gray-50 px-3 py-1 gap-1 flex items-center border rounded-md">
+                            <div className="bg-gray-50 px-3 py-1 gap-1 flex items-center border rounded-md border-gray-300">
                                 <FaSearch className="text-lg  text-gray-500" />
-                                <span className="hidden lg:block">Search in View...</span>
+                                <Search />
                             </div>
                             <div className="bg-gray-50 px-3 py-1 gap-1 items-center border rounded-md hidden md:flex">
                                 < FiFilter className="text-lg text-gray-500" />

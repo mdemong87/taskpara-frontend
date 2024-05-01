@@ -1,8 +1,7 @@
-"use client"
+'use client'
 
 import ContentSide from "@/componnent/ContentSide";
 import { QueryClient, QueryClientProvider } from "react-query";
-
 
 async function Application() {
 

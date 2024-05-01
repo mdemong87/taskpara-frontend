@@ -27,7 +27,7 @@ function SinglePageWper({ id }) {
             <div className="my-4 mr-3 bg-gray-50 px-3 py-4 rounded-md">
                 <div className="flex justify-between items-start">
                     <div>
-                        <div className="flex gap-2 items-end">
+                        <div className="flex flex-col lg:flex-row gap-2 lg:items-end">
                             <h1 className="text-3xl font-bold text-gray-600">{data?.title}</h1>
                             <span className="text-gray-400 font-semibold">{data?.stage}</span>
                         </div>
