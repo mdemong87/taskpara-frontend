@@ -3,6 +3,8 @@ import getTask from "@/utlite/getTask";
 import Image from "next/image";
 import { FaFlag } from "react-icons/fa";
 import { useQuery } from "react-query";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import convertToLocalDate from "../utlite/convertToLocalDate";
 import Loading from "./Loading";
 
@@ -67,6 +69,7 @@ function SinglePageWper({ id }) {
                 </div>
 
             </div>
+            <ToastContainer />
         </div>
     )
 

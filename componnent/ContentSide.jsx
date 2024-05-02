@@ -4,6 +4,8 @@ import { useStore } from "@/lib/store";
 import getTask from "@/utlite/getTask";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AddModalWper from "./AddModalWrper";
 import Bar from "./Bar";
 import BarHead from "./BarHead";
@@ -161,6 +163,7 @@ function ContentSide() {
 
             <AddModalWper refetch={refetch} />
 
+            <ToastContainer />
         </div>
     )
 }

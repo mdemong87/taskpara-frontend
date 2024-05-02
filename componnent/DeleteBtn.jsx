@@ -2,7 +2,6 @@
 
 import { useStore } from "@/lib/store";
 import { MdDeleteOutline } from "react-icons/md";
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modaler from "../componnent/Modaler";
 import Loading from "./Loading";
@@ -17,7 +16,6 @@ function DeleteBtn({ id }) {
 
     return (
         <div>
-            <ToastContainer />
             {loading && <Loading />}
 
             <button onClick={() => setdeletemodalShow(true)} className="bg-red-400 text-gray-50 cursor-pointer px-1 py-1 md:px-3 md:py-1 gap-1 flex items-center border rounded-md transition hover:scale-105">
