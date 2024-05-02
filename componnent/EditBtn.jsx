@@ -4,8 +4,6 @@ import { useStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Modaler from "../componnent/Modaler";
 import Input from "./Input";
 import Loading from "./Loading";
@@ -55,7 +53,6 @@ function EditBtn({ data }) {
 
     return (
         <div>
-            <ToastContainer />
             {loading && <Loading />}
             <button onClick={() => setupdatemodalShow(true)} className="bg-green-300 text-gray-50 cursor-pointer px-1 py-1 md:px-3 md:py-1 gap-1 flex items-center border rounded-md transition hover:scale-105">
                 <FaRegEdit className="text-xs sm:text-sm md:text-md text-gray-100" />
@@ -80,7 +77,7 @@ function EditBtn({ data }) {
 
 
                             <InputTextareaSeleteWrper name={"Task Stage"}>
-                                <Select value={stage} setvalue={setstage} data={[{ name: "Brief", value: "Brief" }, { name: "To-Do", value: "To-Do" }, { name: "In-Progress", value: "In Progress" }, { name: "Complete", value: "Complete" }]} />
+                                <Select value={stage} setvalue={setstage} data={[{ name: "Brief", value: "Brief" }, { name: "To-Do", value: "To-Do" }, { name: "In Progress", value: "In-Progress" }, { name: "Complete", value: "Complete" }]} />
                             </InputTextareaSeleteWrper >
 
 

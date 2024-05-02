@@ -28,7 +28,7 @@ function AddModalWper({ refetch }) {
 
 
     return (
-        <>
+        <div>
             {loading && <Loading />}
             {
                 modalShow && <Modaler>
@@ -45,7 +45,7 @@ function AddModalWper({ refetch }) {
 
 
                             <InputTextareaSeleteWrper name={"Task Stage"}>
-                                <Select setvalue={setstage} data={[{ name: "Brief", value: "Brief" }, { name: "To-Do", value: "To-Do" }, { name: "In-Progress", value: "In Progress" }, { name: "Complete", value: "Complete" }]} />
+                                <Select setvalue={setstage} data={[{ name: "Brief", value: "Brief" }, { name: "To-Do", value: "To-Do" }, { name: "In Progress", value: "In-Progress" }, { name: "Complete", value: "Complete" }]} />
                             </InputTextareaSeleteWrper >
 
 
@@ -61,9 +61,8 @@ function AddModalWper({ refetch }) {
                         </div>
                     </div>
                 </Modaler>
-
             }
-        </>
+        </div>
     )
 }
 
