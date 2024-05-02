@@ -15,14 +15,15 @@ function LogoutBtn() {
         toast.success("Logout Successfull");
         setTimeout(() => {
             router.push("/login");
-        }, 1000)
+        }, 1000);
+
     }
 
 
 
     return (
         <div>
-            <button onClick={() => handleLogout()} className="w-full text-gray-100 bg-gray-800 rounded-md px-3 py-2 flex items-center gap-2">
+            <button onClick={() => handleLogout()} className="w-full text-gray-100 bg-gray-800 rounded-md px-3 py-2 flex items-center gap-2 transition ease-in-out active:scale-105">
                 <CiLogout className="text-gray-100 text-2xl" />
                 <span>Logout</span>
             </button>

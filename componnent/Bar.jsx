@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BsPlusSquareDotted } from "react-icons/bs";
 import { FaFlag, FaLink, FaRegComment } from "react-icons/fa";
@@ -10,14 +9,17 @@ import { toast } from "react-toastify";
 import convertToLocalDate from "../utlite/convertToLocalDate";
 import Loading from "./Loading";
 
-function Bar({ barData, drag, setdrag, catagory }) {
+function Bar({ barData, drag, setdrag, catagory, refetch }) {
 
+
+    //local state here
     const [targetedPosition, settargetedPosition] = useState(null);
     const [targetActive, settargetActive] = useState(false);
     const [isLoading, setisLoading] = useState(false);
-    const router = useRouter();
 
 
+
+    //handle drop function
     async function handleDrop(e) {
 
         settargetActive(false);
@@ -36,7 +38,7 @@ function Bar({ barData, drag, setdrag, catagory }) {
             const res = await response.json();
             setisLoading(false);
             toast.success("Stage Update Successull");
-            router.push(router.asPath);
+            refetch();
         } catch (error) {
             console.log(error);
             console.error("Error updating task:", error.message);

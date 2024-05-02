@@ -4,6 +4,7 @@ import { useStore } from "@/lib/store";
 import getTask from "@/utlite/getTask";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import AddModalWper from "./AddModalWrper";
 import Bar from "./Bar";
 import BarHead from "./BarHead";
 import Loading from "./Loading";
@@ -12,22 +13,28 @@ import SmallScreenContentController from "./smallScreenContentController";
 function ContentSide() {
 
     //get data from the via the react query
-    const { data, isLoading, error, isError } = useQuery("AllTask", () => getTask(process.env.NEXT_PUBLIC_MOCKAPI_URL));
+    const { data, isLoading, error, isError, refetch } = useQuery("AllTask", () => getTask(process.env.NEXT_PUBLIC_MOCKAPI_URL), {
+        manual: true,
+    });
 
     //local state 
     const [controler, setcontroler] = useState("To-Do");
     const [drag, setdrag] = useState(false);
 
 
+
+
     // global state from the Store
     const search = useStore((state) => state.search);
+    const loading = useStore((state) => state.loading);
 
 
     //filter data by the condition of user search    
     let filter = [];
+    const searchQuery = search.toLowerCase();
     for (let i = 0; i < data?.length; i++) {
         // check if the search text match the system or not
-        if (data[i]?.title?.indexOf(search) > -1) {
+        if (data[i]?.title?.toLowerCase()?.indexOf(searchQuery) > -1) {
             filter.push(data[i]);
         }
     }
@@ -84,7 +91,7 @@ function ContentSide() {
                     {
                         brif?.map((item, index) => {
                             return (
-                                <Bar barData={item} key={index} catagory={'Brief'} drag={drag} setdrag={setdrag} />
+                                <Bar barData={item} key={index} catagory={'Brief'} drag={drag} setdrag={setdrag} refetch={refetch} />
                             )
                         })
                     }
@@ -102,7 +109,7 @@ function ContentSide() {
                     {
                         todo?.map((item, index) => {
                             return (
-                                <Bar barData={item} key={index} catagory={'To-Do'} drag={drag} setdrag={setdrag} />
+                                <Bar barData={item} key={index} catagory={'To-Do'} drag={drag} setdrag={setdrag} refetch={refetch} />
                             )
                         })
                     }
@@ -116,7 +123,7 @@ function ContentSide() {
                     {
                         Progress?.map((item, index) => {
                             return (
-                                <Bar barData={item} key={index} catagory={'In-Progress'} drag={drag} setdrag={setdrag} />
+                                <Bar barData={item} key={index} catagory={'In-Progress'} drag={drag} setdrag={setdrag} refetch={refetch} />
                             )
                         })
                     }
@@ -130,7 +137,7 @@ function ContentSide() {
                     {
                         Complete?.map((item, index) => {
                             return (
-                                <Bar barData={item} key={index} catagory={'Complete'} drag={drag} setdrag={setdrag} />
+                                <Bar barData={item} key={index} catagory={'Complete'} drag={drag} setdrag={setdrag} refetch={refetch} />
                             )
                         })
                     }
@@ -150,8 +157,10 @@ function ContentSide() {
                 </div>
 
 
-
             </div >
+
+            <AddModalWper refetch={refetch} />
+
         </div>
     )
 }

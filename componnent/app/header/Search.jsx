@@ -7,7 +7,7 @@ function Search() {
     const setsearch = useStore((state) => state.setsearch);
 
     return (
-        <input type="search" onChange={(e) => { setsearch(e.target.value) }} placeholder="Search Task" className="active:border-0 outline-0 pl-1" name="" id="" />
+        <input type="search" onChange={(e) => { setsearch(e.target.value) }} placeholder="Search Task" className="active:border-0 outline-0 pl-1 bg-gray-50" name="" id="" />
     )
 }
 

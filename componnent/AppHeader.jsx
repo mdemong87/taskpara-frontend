@@ -28,11 +28,11 @@ function AppHeader() {
                             <IoClipboard className="text-lg  text-gray-500" />
                             <span>Board</span>
                         </div>
-                        <div className="flex px-3 py-1 gap-1 items-center">
+                        <div className="px-3 py-1 gap-1 items-center hidden xl:flex">
                             <FaListUl className="text-lg text-gray-500" />
                             <span>List</span>
                         </div>
-                        <div className="flex px-3 py-1  gap-1 items-center">
+                        <div className="px-3 py-1  gap-1 items-center hidden xl:flex">
                             <FaCalendarAlt className="text-lg text-gray-500" />
                             <span>Calender</span>
                         </div>
@@ -59,11 +59,6 @@ function AppHeader() {
                                 <span>Customize</span>
                             </div>
 
-
-                            <div className="flex px-3 gap-1 py-1 items-center md:hidden">
-                                <span>More View</span>
-                                <MdOutlineExpandMore className="text-lg text-gray-500" />
-                            </div>
                         </div>
 
                         <AddBtn />

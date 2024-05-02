@@ -4,7 +4,7 @@ import { useStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 
-function Btn({ name, id }) {
+function Btn({ name, id, refetch }) {
 
 
     //router from next js useRouter api
@@ -24,6 +24,7 @@ function Btn({ name, id }) {
     const setstage = useStore((state) => state.setstage);
     const setpriority = useStore((state) => state.setpriority);
     const setdis = useStore((state) => state.setdis);
+
 
 
     // handleing adding task
@@ -48,7 +49,7 @@ function Btn({ name, id }) {
             setstage('Brief');
             setdis('');
             setmodalShow(false);
-            router.push('/app');
+            refetch();
             toast.success("Task Create Successfull");
         }
     }
